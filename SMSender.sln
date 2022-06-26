@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSender.Api", "SMSender.Api\SMSender.Api.csproj", "{2ABA5871-B95E-45A5-B235-9588D3ED4D1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSender.Processor", "SMSender.Processor\SMSender.Processor.csproj", "{D3ADB070-FD73-4A80-967D-A3A57225D8A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSender.Shared", "SMSender.Shared\SMSender.Shared.csproj", "{5D668539-6D7A-4096-9A31-4A162E212942}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2ABA5871-B95E-45A5-B235-9588D3ED4D1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ABA5871-B95E-45A5-B235-9588D3ED4D1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ABA5871-B95E-45A5-B235-9588D3ED4D1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ABA5871-B95E-45A5-B235-9588D3ED4D1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3ADB070-FD73-4A80-967D-A3A57225D8A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3ADB070-FD73-4A80-967D-A3A57225D8A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3ADB070-FD73-4A80-967D-A3A57225D8A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3ADB070-FD73-4A80-967D-A3A57225D8A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D668539-6D7A-4096-9A31-4A162E212942}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D668539-6D7A-4096-9A31-4A162E212942}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D668539-6D7A-4096-9A31-4A162E212942}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D668539-6D7A-4096-9A31-4A162E212942}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
