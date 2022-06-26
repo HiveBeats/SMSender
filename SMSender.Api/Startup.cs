@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SMSender.Api.Middlewares;
+using SMSender.Shared.Configuration;
 using SMSender.Shared.Models;
 
 namespace SMSender.Api
@@ -29,6 +31,22 @@ namespace SMSender.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var rabbitConfigurationSection = Configuration.GetSection("Rabbit");
+            var rabbitConfig = rabbitConfigurationSection.Get<RabbitConfig>();
+            
+            services.AddMassTransit(x =>
+            {
+                x.SetKebabCaseEndpointNameFormatter();
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host(rabbitConfig.Host, "/", h =>
+                    {
+                        h.Username(rabbitConfig.User);
+                        h.Password(rabbitConfig.Password);
+                    });
+                });
+            });
+            
             services.AddControllers();
             
             var connectionString = Configuration.GetConnectionString("SMSDb");
