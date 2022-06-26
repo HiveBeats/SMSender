@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace SMSender.Api.Models
+namespace SMSender.Shared.Models
 {
     public class AppDbContext: DbContext
     {

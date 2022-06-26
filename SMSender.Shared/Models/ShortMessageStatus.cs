@@ -1,4 +1,4 @@
-namespace SMSender.Api.Models
+namespace SMSender.Shared.Models
 {
     public enum ShortMessageStatus
     {
