@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SMSender.Api.Models
+namespace SMSender.Shared.Models
 {
     public class ShortMessage
     {

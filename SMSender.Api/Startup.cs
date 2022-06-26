@@ -13,7 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SMSender.Api.Middlewares;
-using SMSender.Api.Models;
+using SMSender.Shared.Models;
 
 namespace SMSender.Api
 {
