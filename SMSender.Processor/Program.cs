@@ -43,7 +43,7 @@ namespace SMSender.Processor
                     services.AddMassTransit(x =>
                     {
                         x.SetKebabCaseEndpointNameFormatter();
-                        x.AddConsumer<MessageCreatedConsumer>();
+                        x.AddConsumer<ShortMessageCreatedConsumer>();
                         x.UsingRabbitMq((context, cfg) =>
                         {
                             cfg.Host(rabbitConfig.Host, "/", h =>

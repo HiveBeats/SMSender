@@ -1,5 +1,7 @@
 using System;
 using System.Threading.Tasks;
+using PhoneNumbers;
+using SMSender.Shared.Configuration;
 using SMSender.Shared.Dto;
 using SMSender.Shared.Models;
 
@@ -13,15 +15,24 @@ namespace SMSender.Processor.Services
     public class ShortMessageProcessingService: IShortMessageProcessingService
     {
         private readonly AppDbContext _db;
-
+        private readonly PhoneNumberUtil _phoneNumberUtil;
         public ShortMessageProcessingService(AppDbContext db)
         {
             _db = db;
+            _phoneNumberUtil = PhoneNumberUtil.GetInstance();
         }
 
-        public bool ValidatePhoneNumber(string phone)
+        public bool ValidatePhoneNumber(string number)
         {
-            throw new NotImplementedException();
+            try
+            {
+                PhoneNumber phone = _phoneNumberUtil.Parse(number, Constants.AustraliaCountryCode);
+                return _phoneNumberUtil.IsValidNumberForRegion(phone, Constants.AustraliaCountryCode);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
 
         public async Task SendShortMessage(IShortMessageDto message)

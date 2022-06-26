@@ -5,12 +5,12 @@ using SMSender.Shared.Dto;
 
 namespace SMSender.Processor.Services
 {
-    public class MessageCreatedConsumer: IConsumer<ShortMessageCreated>
+    public class ShortMessageCreatedConsumer: IConsumer<ShortMessageCreated>
     {
         private readonly IShortMessageProcessingService _service;
-        private readonly ILogger<MessageCreatedConsumer> _logger;
+        private readonly ILogger<ShortMessageCreatedConsumer> _logger;
         
-        public MessageCreatedConsumer(IShortMessageProcessingService service, ILogger<MessageCreatedConsumer> logger)
+        public ShortMessageCreatedConsumer(IShortMessageProcessingService service, ILogger<ShortMessageCreatedConsumer> logger)
         {
             _service = service;
             _logger = logger;
