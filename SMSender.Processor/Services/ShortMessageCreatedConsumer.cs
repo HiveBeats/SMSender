@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Threading.Tasks;
 using MassTransit;
 using Microsoft.Extensions.Logging;
@@ -20,6 +21,7 @@ namespace SMSender.Processor.Services
         {
             var message = context.Message;
             await _service.SendShortMessage(message);
+            _logger.LogInformation("Message consumed: {time}", JsonSerializer.Serialize(message));
         }
     }
 }

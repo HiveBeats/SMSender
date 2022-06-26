@@ -28,7 +28,7 @@ namespace SMSender.Processor
                 {
                     var configurationBuilder = new ConfigurationBuilder();
                     var config = configurationBuilder.SetBasePath(Environment.CurrentDirectory)
-                        .AddJsonFile("appsettings.json", optional:true)
+                        .AddEnvironmentVariables("ASPNETCORE_")
                         .Build();
                     
                     var connectionString = config.GetConnectionString("SMSDb");
@@ -39,7 +39,7 @@ namespace SMSender.Processor
                     
                     var rabbitConfigurationSection = config.GetSection("Rabbit");
                     var rabbitConfig = rabbitConfigurationSection.Get<RabbitConfig>();
-                    
+                    //todo: fix consumer
                     services.AddMassTransit(x =>
                     {
                         x.SetKebabCaseEndpointNameFormatter();

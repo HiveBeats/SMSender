@@ -367,7 +367,9 @@ FodyWeavers.xsd
 ##
 ## Visual studio for Mac
 ##
-
+mysql/
+rabbitmq/
+logs/
 
 # globs
 Makefile.in
@@ -381,6 +383,7 @@ autom4te.cache/
 *.tar.gz
 tarballs/
 test-results/
+
 
 # Mac bundle stuff
 *.dmg

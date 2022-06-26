@@ -21,4 +21,5 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 COPY ./SMSender.Processor/wait-for.sh .
+RUN ["chmod", "+x", "./wait-for.sh"]
 ENTRYPOINT ["dotnet", "SMSender.Processor.dll"]
