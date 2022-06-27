@@ -20,6 +20,9 @@ function goBack() {
 <template>
     <div>
         <a href="" @click="goBack">Back to list</a>
+        <h2>Message Details:</h2>
+        
+        <br/>
         <table v-if="item">
             <tr
                 v-for="prop in Object.keys(item).filter((x) => x != 'id')"
@@ -31,3 +34,10 @@ function goBack() {
         </table>
     </div>
 </template>
+
+<style scoped>
+.heading{
+    display: flex;
+    align-items: stretch;
+}
+</style>

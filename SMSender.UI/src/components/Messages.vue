@@ -17,25 +17,36 @@ function redirectToItem(id) {
 
 <template>
     <div>
+        <h2>All Messages:</h2>
+        <br/>
         <table v-if="items && items.length">
             <thead>
                 <tr>
                     <th>From</th>
                     <th>To</th>
                     <th>Status</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr
                     v-for="item in items"
                     v-bind:key="item.id"
-                    @click="redirectToItem(item.id)"
                 >
                     <td>{{ item.from }}</td>
                     <td>{{ item.to }}</td>
                     <td>{{ item.status }}</td>
+                    <td><button @click="redirectToItem(item.id)">Details</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
 </template>
+
+<style scoped>
+
+table {
+    width: 100%;
+}
+
+</style>

@@ -14,15 +14,16 @@ import { RouterView } from 'vue-router';
 @import '@/assets/base.css';
 
 #app {
-    max-width: 1280px;
-    margin: 0 auto;
+    /*max-width: 1280px;*/
+    /*margin: 0 auto;*/
     padding: 2rem;
 
     font-weight: normal;
+    width:100%;
 }
 
 header {
-    line-height: 1.5;
+    /*line-height: 1.5;*/
     max-height: 100vh;
 }
 
@@ -69,17 +70,38 @@ nav a:first-of-type {
     border: 0;
 }
 
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+table {
+    border-collapse: collapse;
+}
+
 @media (min-width: 1024px) {
     body {
         display: flex;
         place-items: center;
     }
 
-    #app {
+    /* #app {
         display: grid;
         grid-template-columns: 1fr 1fr;
         padding: 0 2rem;
-    }
+    } */
 
     header {
         display: flex;
