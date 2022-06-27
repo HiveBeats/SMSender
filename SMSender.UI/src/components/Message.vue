@@ -7,9 +7,9 @@ const route = useRoute();
 const router = useRouter();
 
 watchEffect(async () => {
-    item.value = await fetch(
-        `http://localhost:5000/api/ShortMessage/${route.params.id}`
-    ).then((x) => x.json());
+    item.value = await fetch(`/api/ShortMessage/${route.params.id}`).then((x) =>
+        x.json()
+    );
 });
 
 function goBack() {
@@ -21,8 +21,8 @@ function goBack() {
     <div>
         <a href="" @click="goBack">Back to list</a>
         <h2>Message Details:</h2>
-        
-        <br/>
+
+        <br />
         <table v-if="item">
             <tr
                 v-for="prop in Object.keys(item).filter((x) => x != 'id')"
@@ -36,7 +36,7 @@ function goBack() {
 </template>
 
 <style scoped>
-.heading{
+.heading {
     display: flex;
     align-items: stretch;
 }

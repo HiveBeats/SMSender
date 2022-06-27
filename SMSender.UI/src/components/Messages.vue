@@ -5,9 +5,7 @@ const items = ref(null);
 const router = useRouter();
 
 watchEffect(async () => {
-    items.value = await fetch(
-        'http://localhost:5000/api/ShortMessage/All'
-    ).then((x) => x.json());
+    items.value = await fetch('/api/ShortMessage/All').then((x) => x.json());
 });
 
 function redirectToItem(id) {
@@ -18,7 +16,7 @@ function redirectToItem(id) {
 <template>
     <div>
         <h2>All Messages:</h2>
-        <br/>
+        <br />
         <table v-if="items && items.length">
             <thead>
                 <tr>
@@ -29,14 +27,15 @@ function redirectToItem(id) {
                 </tr>
             </thead>
             <tbody>
-                <tr
-                    v-for="item in items"
-                    v-bind:key="item.id"
-                >
+                <tr v-for="item in items" v-bind:key="item.id">
                     <td>{{ item.from }}</td>
                     <td>{{ item.to }}</td>
                     <td>{{ item.status }}</td>
-                    <td><button @click="redirectToItem(item.id)">Details</button></td>
+                    <td>
+                        <button @click="redirectToItem(item.id)">
+                            Details
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -44,9 +43,7 @@ function redirectToItem(id) {
 </template>
 
 <style scoped>
-
 table {
     width: 100%;
 }
-
 </style>
