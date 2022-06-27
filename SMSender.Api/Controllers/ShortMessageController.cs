@@ -53,6 +53,7 @@ namespace SMSender.Api.Controllers
 
             return Ok(new ShortMessageDto()
             {
+                Id = item.Id,
                 From = item.From,
                 To = item.To,
                 Content = item.Content,
@@ -66,6 +67,7 @@ namespace SMSender.Api.Controllers
             var items = await _db.ShortMessages.ToListAsync();
             return Ok(items.Select(x => new ShortMessageDto()
             {
+                Id = x.Id,
                 From = x.From,
                 To = x.To,
                 Status = x.Status.ToString()
