@@ -12,10 +12,8 @@ services:
       MYSQL_ROOT_HOST: 172.*.*.*
     volumes:
       - ./mysql:/var/lib/mysql
-    ports:
-      - 3306:3306
-    # expose:
-    #   - "3306"
+    expose:
+      - "3306"
     logging:
       options:
         max-size: "10m"
@@ -24,10 +22,8 @@ services:
     container_name: adminer
     image: adminer
     restart: always
-    ports:
-      - 8080:8080
-    # expose:
-    #   - "8080"
+    expose:
+      - "8080"
   web:
     container_name: web
     build:
@@ -46,8 +42,8 @@ services:
       - db
     links: 
       - db
-    ports:
-      - 5000:5000
+    expose:
+      - "5000"
     logging:
       options:
         max-size: "10m"
@@ -79,21 +75,23 @@ services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
     container_name: 'rabbitmq'
-    ports:
-        - 5672:5672
-        - 15672:15672
+    expose:
+      - "5672"
+      - "15672"
     volumes:
         - ./rabbitmq/data/:/var/lib/rabbitmq/
         - ./rabbitmq/log/:/var/log/rabbitmq
-  # front:
-  #   container_name: front
-  #   image: "nginx:alpine"
-  #   ports: 
-  #     - "80:80"
-  #   volumes:
-  #     #- ./Frontend/build:/usr/share/nginx/html
-  #     - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-  #   logging:
-  #     options:
-  #       max-size: "10m"
-  #       max-file: "10"
+  front:
+    container_name: front
+    restart: always
+    build:
+      context: ./SMSender.UI/
+      dockerfile: ./Dockerfile
+    ports: 
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
