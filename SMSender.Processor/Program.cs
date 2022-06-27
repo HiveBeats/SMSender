@@ -39,7 +39,7 @@ namespace SMSender.Processor
                     
                     var rabbitConfigurationSection = config.GetSection("Rabbit");
                     var rabbitConfig = rabbitConfigurationSection.Get<RabbitConfig>();
-                    //todo: fix consumer
+                    
                     services.AddMassTransit(x =>
                     {
                         x.SetKebabCaseEndpointNameFormatter();
@@ -51,10 +51,10 @@ namespace SMSender.Processor
                                 h.Username(rabbitConfig.User);
                                 h.Password(rabbitConfig.Password);
                             });
+                            cfg.ConfigureEndpoints(context);
                         });
                     });
                     services.AddTransient<IShortMessageProcessingService, ShortMessageProcessingService>();
-                    services.AddHostedService<Worker>();
                 });
     }
 }
