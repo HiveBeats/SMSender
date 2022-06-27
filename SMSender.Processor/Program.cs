@@ -28,7 +28,7 @@ namespace SMSender.Processor
                 {
                     var configurationBuilder = new ConfigurationBuilder();
                     var config = configurationBuilder.SetBasePath(Environment.CurrentDirectory)
-                        .AddJsonFile("appsettings.json", optional:true)
+                        .AddEnvironmentVariables("ASPNETCORE_")
                         .Build();
                     
                     var connectionString = config.GetConnectionString("SMSDb");
@@ -51,10 +51,10 @@ namespace SMSender.Processor
                                 h.Username(rabbitConfig.User);
                                 h.Password(rabbitConfig.Password);
                             });
+                            cfg.ConfigureEndpoints(context);
                         });
                     });
                     services.AddTransient<IShortMessageProcessingService, ShortMessageProcessingService>();
-                    services.AddHostedService<Worker>();
                 });
     }
 }
